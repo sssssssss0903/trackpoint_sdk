@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>埋点 SDK Demo 页面</title>
+  <script src="dist/track-point-sdk.js"></script> <!-- 引入打包后的 SDK -->
+   <!-- 添加 Favicon -->
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <h1>埋点 SDK 示例页面</h1>
+
+  <button id="loginButton" type="button">点击登录</button>
+
+  
+  <hr>
+
+  <!-- 输入框 -->
+  <label for="username">用户名：</label>
+  <input type="text" id="username" placeholder="请输入用户名" />
+  
+  <label for="password">密码：</label>
+  <input type="password" id="password" placeholder="请输入密码" />
+  
+  <button id="submitButton" type="button">提交</button>
+  
+  <hr>
+
+  <!-- 表单 -->
+  <form id="contactForm">
+    <label for="name">姓名：</label>
+    <input type="text" id="name" name="name" placeholder="请输入姓名" required />
+    
+    <label for="email">邮箱：</label>
+    <input type="email" id="email" name="email" placeholder="请输入邮箱" required />
+    
+    <button type="submit">提交表单</button>
+  </form>
+
+  <hr>
+
+  <!-- 链接 -->
+  <a href="https://example.com" id="externalLink" target="_blank">点击访问示例页面</a>
+  
+  <hr>
+
+  <!-- 图片 -->
+  <img src="https://via.placeholder.com/150" alt="Placeholder Image" id="image" />
+
+
+</body>
+</html>
+
