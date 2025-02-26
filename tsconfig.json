@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",  // 编译目标，可以根据需求调整
+      "module": "CommonJS", // Node.js 默认的模块格式
+      "outDir": "./dist",   // 编译后的输出目录
+      "strict": true,       // 启用严格类型检查
+      "esModuleInterop": true,
+      "skipLibCheck": true  // 跳过库的类型检查
+    },
+    "include": [
+      "src/sdk/*.ts" // 指定需要编译的 TypeScript 文件
+    ]
+  }
+  

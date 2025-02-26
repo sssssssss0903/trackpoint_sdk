@@ -1,0 +1,68 @@
+{
+  "track-point": [
+    {
+      "id": "1ab1",
+      "event_name": "click_event",
+      "event_params": {
+        "button_id": "button_1",
+        "page_url": "https://example.com",
+        "app_version": "1.0.0",
+        "platform": "web",
+        "browser": "Node.js",
+        "os": "win32",
+        "uid": "anonymous",
+        "timestamp": "2025-02-03T17:26:06.276Z"
+      }
+    },
+    {
+      "id": "d37b",
+      "event_name": "error_event",
+      "event_params": {
+        "message": "An unexpected error occurred",
+        "source": "app.js",
+        "lineno": 42,
+        "colno": 21,
+        "app_version": "1.0.0",
+        "platform": "web",
+        "browser": "Node.js",
+        "os": "win32",
+        "uid": "anonymous",
+        "timestamp": "2025-02-03T17:26:06.276Z"
+      }
+    },
+    {
+      "id": "2d7c",
+      "event_name": "click_event",
+      "event_params": {
+        "button_id": "button_1",
+        "page_url": "https://example.com",
+        "app_version": "1.0.0",
+        "platform": "web",
+        "browser": "Node.js",
+        "os": "win32",
+        "uid": "anonymous",
+        "timestamp": "2025-02-03T17:39:33.626Z",
+        "project_id": "xxx",
+        "upload_percent": 0.1
+      }
+    },
+    {
+      "id": "4859",
+      "event_name": "error_event",
+      "event_params": {
+        "message": "An unexpected error occurred",
+        "source": "app.js",
+        "lineno": 42,
+        "colno": 21,
+        "app_version": "1.0.0",
+        "platform": "web",
+        "browser": "Node.js",
+        "os": "win32",
+        "uid": "anonymous",
+        "timestamp": "2025-02-03T17:39:33.626Z",
+        "project_id": "xxx",
+        "upload_percent": 0.1
+      }
+    }
+  ]
+}
