@@ -1,0 +1,44 @@
+#  Node.js 相关
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+lerna-debug.log*
+
+# 构建 & 产物文件
+dist/
+dist-ssr/
+.build/
+.cache/
+.vite/
+.vitepress/
+webpack-stats.json
+
+#  TypeScript 相关
+*.tsbuildinfo
+
+#  服务器相关（Server 目录）
+server/logs/
+server/db.json
+
+# 环境变量（防止泄露敏感信息）
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# 编辑器相关（VS Code, WebStorm, IntelliJ）
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?  # 可能是 swap 文件，防止误提交
+
+#  操作系统 & 其他无关文件
+.DS_Store  # MacOS 额外文件
+Thumbs.db  # Windows 额外文件
+*.swp  # Linux 额外文件
