@@ -61,18 +61,34 @@ app.post('/api/upload-events', (req, res) => {
   });
 });
 
-// 获取所有事件数据
-app.get('/api/get-events', (req, res) => {
-  const query = 'SELECT * FROM events ORDER BY timestamp DESC';
+app.get('/api/get-all-events', (req, res) => {
+  const query = `
+    SELECT id, event_name, event_data, timestamp 
+    FROM events
+    ORDER BY timestamp DESC
+  `;
 
   db.query(query, (err, results) => {
     if (err) {
-      console.error(' Error fetching events:', err);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      console.error(" Database error:", err);
+      return res.status(500).json({ success: false, message: "Database error" });
     }
+
+    console.log("原始数据库数据:", results);
+
+    // **确保 event_data 直接返回 JSON 对象**
+    results = results.map(event => ({
+      id: event.id,
+      event_name: event.event_name,
+      event_data: event.event_data,  // **不再 JSON.parse**
+      timestamp: event.timestamp
+    }));
+
+    console.log("处理后的数据:", results);
     res.json({ success: true, data: results });
   });
 });
+
 
 //  查询特定时间段内某事件的 PV/UV 数据
 app.get('/api/get-events-pv-uv', (req, res) => {
@@ -135,18 +151,37 @@ app.post('/api/add-event', (req, res) => {
 
 /** 删除事件 */
 app.delete('/api/delete-event/:id', (req, res) => {
-  const { id } = req.params;
+  const id = Number(req.params.id); // 确保 ID 是数值
+
+  // 1. 确保 ID 是有效整数
+  if (!id || isNaN(id) || id <= 0 || !Number.isInteger(id)) {
+    console.warn("无效的事件 ID:", req.params.id);
+    return res.status(400).json({ success: false, message: "Invalid event ID" });
+  }
 
   const query = 'DELETE FROM events WHERE id = ?';
 
+  // 2. 记录 SQL 查询和 ID
+  console.log(" 执行 DELETE 查询, 事件 ID:", id);
+
   db.query(query, [id], (err, result) => {
     if (err) {
-      console.error('Error deleting event:', err);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      console.error(" 删除事件失败，SQL 执行错误:", err);
+      return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
-    res.json({ success: true, message: 'Event deleted successfully' });
+
+    // 3. 确保事件确实被删除
+    if (result.affectedRows === 0) {
+      console.warn(" 事件未找到, ID:", id);
+      return res.status(404).json({ success: false, message: "Event not found" });
+    }
+
+    console.log(" 事件删除成功, ID:", id);
+    res.json({ success: true, message: "Event deleted successfully" });
   });
 });
+
+
 
 /** 更新事件 */
 app.put('/api/update-event/:id', (req, res) => {
